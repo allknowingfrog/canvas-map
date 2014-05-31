@@ -25,6 +25,10 @@ for (var y = 0; y < map.size; y++) {
         if (x == y) { //draw a diagonal line of blue squares
             map.cells[x][y] = 1;
         }
+        if (Math.abs(x-y) == (map.size-1)) { //color remainig corners brown
+            map.cells[x][y] = 2;
+        }
+        map.cells[4][6] = 3; //color cell 4,6 black
     }
 }
 
@@ -34,6 +38,10 @@ var entities = new Array();
 entities.push({x: 0, y: 0});
 //blue square
 entities.push({x: 1, y: 0});
+//brown square
+entities.push({x: 0, y: 1});
+//black square
+entities.push({x: 1, y: 1});
 
 //initialize canvas variables into the global scope
 var canvas;
