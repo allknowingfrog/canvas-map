@@ -32,6 +32,23 @@ for (var y = 0; y < map.size; y++) {
     }
 }
 
+//mirror map horizontally and vertically
+var copy;
+for (var x=0; x<map.size; x++) {
+    //using slice returns a copy instead of a pointer
+    copy = map.cells[x].slice();
+    for (var i=0; i<map.size; i++) {
+        //push adds to the end, pop takes from the end
+        map.cells[x].push(copy.pop());
+    }
+}
+copy = map.cells.slice();
+for (var i=0; i<map.size; i++) {
+    map.cells.push(copy.pop());
+}
+//map is now twice as big
+map.size *= 2;
+
 //game entities (terrain, armies, etc) - currently just tile coords
 var entities = new Array();
 //green square
